@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="PZ3_NetworkService.Views.NetworkDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PZ3_NetworkService.Views"
+             xmlns:vml="clr-namespace:PZ3_NetworkService.VML"
+             vml:ViewModelLocator.AutoHookedUpViewModel="True"
+             mc:Ignorable="d" Background="White" Width="710.5" Height="570.5">
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto" MinHeight="29"></RowDefinition>
+            <RowDefinition Height="Auto" MinHeight="7"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+            <StackPanel Width="701" HorizontalAlignment="Left" Margin="0,0,0,246">
+                <StackPanel Margin="0,0,10,0" Background="DarkGray" Height="60">
+                    <Label FontWeight="Bold" Content="FILTER:" Width="214" HorizontalAlignment="Left"></Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Tip ventila:" HorizontalAlignment="Left"  Width="66" Margin="0,0,0,0" Height="26"/>
+                        <ComboBox HorizontalAlignment="Center" ToolTip="Kliknite za izbor jednog od ponudjenih tipova" ItemsSource="{Binding Tipovi}" SelectedItem="{Binding FilterType, Mode=TwoWay}" Width="146" Height="23" VerticalContentAlignment="Center"/>
+
+                        <Label Content="Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="0,3,0,0"/>
+                        <StackPanel Margin="0,0,5,0">
+                            <RadioButton Content="Veći od  :" Background="White" IsChecked="{Binding Rbvece}"></RadioButton>
+                            <RadioButton Content="Manji od:" Background="White" IsChecked="{Binding Rbmanje}"></RadioButton>
+                        </StackPanel>
+                        <TextBox Text="{Binding IdFilter, Mode=TwoWay}" Width="38" Height="24" VerticalContentAlignment="Center"/>
+                        <Button Command="{Binding ApplyFilterCommand}"  ToolTip="Klikom na ovo dugme prikazace se svi ventili koji zadovoljavaju prethodne kriterijume." FontWeight="Bold" FontSize="12" Content="Primeni filter" Background="Gray" Width="83" Margin="5 0 0 0" Height="20"></Button>
+                        <Button Command="{Binding ResetFilterCommand}" ToolTip="Klikom na ovo dugme u listi se prikazuju svi postojeci ventili."  FontWeight="Bold" Background="Gray"  Content="Poništi filter" Width="75" Margin="5 0 0 0" Height="20"></Button>
+                    </StackPanel>
+                </StackPanel>
+                <DataGrid x:Name="dg_tabela"  Background="DarkGray" ItemsSource="{Binding Ventili, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedVentil, Mode=TwoWay}"  IsReadOnly="True" AutoGenerateColumns="False"  Height="305" VerticalAlignment="Top" Margin="0,10,10,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="ID:" Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn  Header="Izgled ventila:" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding PhotoUri, Mode=TwoWay}" Height="50" Width="50"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Naziv:" Width="*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Binding="{Binding TypeName}" Header="Tip ventila:" Width="130">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Binding="{Binding Val}" Header="Pritisak:" Width="80">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+            <StackPanel Width="146" Margin="-150,380,0,91">
+                <Button Content="Dodaj" ToolTip="Klikni za dodavanje novog ventila" FontWeight="Bold" Background="Gray" Command="{Binding AddCommand}" Margin="10,0,10,5" Height="34" />
+                <Button Content="Ukloni" ToolTip="Klikni za uklanjanje selektovanog ventila iz liste"  FontWeight="Bold" Background="Gray" Command="{Binding DeleteCommand}" Height="34" Margin="10,5,10,10"/>
+            </StackPanel>
+            <StackPanel Width="148" Margin="-440,380,0,91" Background="DarkGray">
+
+                <Label x:Name="labelizgled" FontWeight="Bold" Content="Izgled Ventila:" HorizontalAlignment="Left"  Width="90" Margin="0,0,0,0" Height="26"/>
+                <Image x:Name="TypePriview" ToolTip="Slika ventila" Source="{Binding Tipimg}" HorizontalAlignment="Left" Height="104"  VerticalAlignment="Top" Width="116" Margin="22,15,0,0"/>
+            </StackPanel>
+
+            <StackPanel Margin="-1000,380,0,91" Width="399" Background="DarkGray">
+                <Label  FontWeight="Bold" Content="Dodaj novi:"  HorizontalAlignment="Left" Width="277"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="ID  Ventila    :" HorizontalAlignment="Left"  Width="81" Margin="60,0,0,0" Height="25"/>
+                    <TextBox Text="{Binding IdBind, Mode=TwoWay}" ToolTip="Unesite ceo pozitivan broj"  Width="192" Height="23" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Label Content="Naziv Ventila:" HorizontalAlignment="Left"  Width="81"  Margin="60,5,0,0"/>
+                    <TextBox x:Name="Nemebox" ToolTip="Unesite naziv ventila" HorizontalAlignment="Left" Width="192" Height="23"  TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}"  VerticalContentAlignment="Center" Margin="0,4,0,3"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Tip Ventila    :" HorizontalAlignment="Left"  Width="81" Margin="60,0,0,0"/>
+                    <ComboBox HorizontalAlignment="Left"  ToolTip="Kliknite za izbor jednog od ponudjenih tipova" ItemsSource="{Binding Tipovi}" SelectedItem="{Binding Tip, Mode=TwoWay}"  Width="191" Height="22"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

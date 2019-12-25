@@ -1,0 +1,48 @@
+﻿<Window x:Class="PZ3_NetworkService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PZ3_NetworkService"
+        xmlns:views="clr-namespace:PZ3_NetworkService.Views"
+        xmlns:viewModel="clr-namespace:PZ3_NetworkService.ViewModel"
+        mc:Ignorable="d"
+        Title="Pritisak ventila" Width="800" Height="650">
+
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel></viewModel:MainWindowViewModel>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:NetworkViewModel}">
+            <views:NetworkView></views:NetworkView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:NetworkDataViewModel}">
+            <views:NetworkDataView></views:NetworkDataView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:DataChartViewModel}">
+            <views:DataChartView></views:DataChartView>
+        </DataTemplate>
+       
+    </Window.Resources>
+
+    <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" Margin="5">
+                <Menu DockPanel.Dock="Top" Height="36" Background="DarkGray">
+                    <MenuItem Header="Network View" Background="Gray" FontSize="14" FontWeight="Bold" Command="{Binding NavCommand}" CommandParameter="networkview" Height="36" HorizontalContentAlignment="Center" Width="130"/>
+                    <MenuItem Header="Network Data" Background="Gray"  FontSize="14" FontWeight="Bold" Command="{Binding NavCommand}" CommandParameter="networkdata" Height="36" HorizontalContentAlignment="Center" Width="130"/>
+                    <MenuItem Header=" Data Chart" Background="Gray" FontSize="14" FontWeight="Bold" Command="{Binding NavCommand}" CommandParameter="datachart" Height="36" HorizontalContentAlignment="Center" Width="130"/>
+                </Menu>
+            </DockPanel>
+
+            <Grid x:Name="MainContent" Grid.Row="1">
+                <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>
