@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\HP 650 G2\Desktop\pz3\PZ3-NetworkService\PZ3-NetworkService\obj\Debug\
+C:\Users\HP 650 G2\Documents\GitHub\hciPz3\PZ3-NetworkService\PZ3-NetworkService\obj\Debug\
 PZ3_NetworkService
 none
 false
 DEBUG;TRACE
-C:\Users\HP 650 G2\Desktop\pz3\PZ3-NetworkService\PZ3-NetworkService\App.xaml
+C:\Users\HP 650 G2\Documents\GitHub\hciPz3\PZ3-NetworkService\PZ3-NetworkService\App.xaml
 41791871490
 
-16-398506575
-15571471278
+17-903491281
+151157653767
 MainWindow.xaml;Views\DataChartView.xaml;Views\NetworkDataView.xaml;Views\NetworkView.xaml;
 
-False
+True
 
