@@ -300,11 +300,3 @@
 12/25/2019 16:43:20 | Trenutni pritisak na ventilu: 22 (ID ventila) je:8 MPa
 12/25/2019 16:43:26 | Trenutni pritisak na ventilu: 22331 (ID ventila) je:18 MPa
 12/25/2019 16:43:32 | Trenutni pritisak na ventilu: 2233 (ID ventila) je:9 MPa
-12/29/2019 19:48:59 | Trenutni pritisak na ventilu: 5 (ID ventila) je:14 MPa
-12/29/2019 19:49:04 | Trenutni pritisak na ventilu: 5 (ID ventila) je:8 MPa
-12/29/2019 19:49:10 | Trenutni pritisak na ventilu: 22 (ID ventila) je:10 MPa
-12/29/2019 19:49:14 | Trenutni pritisak na ventilu: 22 (ID ventila) je:8 MPa
-12/29/2019 19:49:18 | Trenutni pritisak na ventilu: 2 (ID ventila) je:17 MPa
-12/29/2019 19:49:22 | Trenutni pritisak na ventilu: 5 (ID ventila) je:18 MPa
-12/29/2019 19:49:26 | Trenutni pritisak na ventilu: 22 (ID ventila) je:7 MPa
-12/29/2019 19:49:29 | Trenutni pritisak na ventilu: 22 (ID ventila) je:12 MPa
